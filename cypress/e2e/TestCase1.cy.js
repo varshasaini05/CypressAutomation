@@ -1,5 +1,5 @@
 //Dummy testcase for reference---Do not run this testcase as it will failed.
-describe('Test Suite Name', () => {
+describe('Test Suite 1', () => {
 
     before(() => {
       // Code to run before all tests (e.g., set up, login)
