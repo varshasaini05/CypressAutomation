@@ -1,4 +1,6 @@
-describe('Test Suite Name', () => {
+import Login from "../PageObjects/LoginPage";
+
+describe('Test Suite Login', () => {
 
   before(() => {
     // Code to run before all tests (e.g., set up, login)
@@ -6,12 +8,20 @@ describe('Test Suite Name', () => {
 
   beforeEach(() => {
     // Code to run before each test (e.g., resetting the state, visiting pages)
-    cy.visit('https://www.amazon.com/');
+    cy.visit('https://practicetestautomation.com/practice-test-login/');
   });
 
-  it('Test Case 1: Check title of the page', () => {
-    // Assertions for title
-    cy.title().should('eq', 'Amazon.com. Spend less. Smile more.');
+  it('should login with data from fixture', function () {
+    // Load data from fixture file
+    cy.fixture('loginData').then((data) => {
+      // Create an instance of the Login class (previously referred to as LoginPage)
+      const loginPage = new Login();
+      
+      // Use the fixture data in the Page Object methods
+      loginPage.setUsername(data.userName); 
+      loginPage.setPassword(data.password);
+      loginPage.submitButtonClick();
+    });
   });
 
   afterEach(() => {
