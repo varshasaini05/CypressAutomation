@@ -8,20 +8,29 @@ describe('Test Suite Login', () => {
 
   beforeEach(() => {
     // Code to run before each test (e.g., resetting the state, visiting pages)
-    cy.visit('https://practicetestautomation.com/practice-test-login/');
+    cy.loginAndSetup();
   });
 
-  it('should login with data from fixture', function () {
-    // Load data from fixture file
-    cy.fixture('loginData').then((data) => {
+  //Testcase : use POM Structure
+  it('Testcase to login using POM Structure with Fixtures', function () {
+
+      // Load data from fixture file
+      cy.fixture('loginData').then((data) => {
       // Create an instance of the Login class (previously referred to as LoginPage)
       const loginPage = new Login();
-      
       // Use the fixture data in the Page Object methods
       loginPage.setUsername(data.userName); 
       loginPage.setPassword(data.password);
       loginPage.submitButtonClick();
     });
+  });
+
+  //Testcase : use custom command
+  it("Testcase to Login via login custom command with Fixtures", () =>{
+     // Load data from fixture file
+     cy.fixture('loginData').then((data) => {
+     cy.loginApplication(data.userName,data.password);
+  });
   });
 
   afterEach(() => {
