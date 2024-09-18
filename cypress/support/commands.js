@@ -21,7 +21,8 @@ Cypress.Commands.add("loginApplication", (UserName, Password) => {
     cy.get('#submit.btn').click();
 })
 
-
+/// <reference types="Cypress" />
+/// <reference types="cypress-xpath" />
 
 //
 //
